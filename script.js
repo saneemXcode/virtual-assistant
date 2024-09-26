@@ -92,7 +92,7 @@ function takeCommand(message){
    }
    else if(message.includes("open whatsapp")){
     speak("opening whatsapp...")
-    window.open("whatsapp://")
+    window.open('https://whatsapp.com/',"_blank")
    }
    
    else if(message.includes("time")){
