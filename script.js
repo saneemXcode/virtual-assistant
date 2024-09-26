@@ -21,11 +21,9 @@ function wishMe() {
         speak("Good Morning Sir");
     } else if (hours >= 12 && hours < 16) {
         speak("Good Afternoon Sir");
-    } else if (hours >= 16 && hours < 19) {
+    } else if (hours >= 16 && hours < 20) {
         speak("Good Evening Sir");
-    } else {
-        speak("Good Night Sir");
-    }
+    } 
 }
 
 
