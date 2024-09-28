@@ -57,14 +57,14 @@ btn.addEventListener("click",()=>{
 })
 
 function openWhatsApp() {
-   
+    speak("Opening WhatsApp...");
 
     // Check if the user is on mobile or desktop
     const isMobile = /Mobi|Android/i.test(navigator.userAgent);
     
     if (isMobile) {
         // Attempt to open WhatsApp on mobile
-        const whatsappLink = "whatsapp://send?text=Hello"; // Optional text to pre-fill
+        const whatsappLink = "whatsapp://send"; // Basic WhatsApp link
         window.location.href = whatsappLink; // This should open WhatsApp
     } else {
         // User is on desktop
@@ -83,6 +83,7 @@ function openWhatsApp() {
         }
     }
 }
+
 
 function takeCommand(message){
     btn.style.display="flex";
