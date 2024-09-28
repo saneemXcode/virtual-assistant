@@ -106,10 +106,15 @@ function takeCommand(message){
     speak("opening twitter...")
     window.open('https://x.com/',"_blank")
    }
-   else if(message.includes("open github")||message.includes("open get hub") ||message.includes("open it hub")||message.includes("open get up") || message.includes("open git hab") ){
-    speak("opening github...")
-    window.open('https://github.com/',"_blank")
-   }
+ 
+   else if (
+    ["open github", "open get hub", "open it hub", "open get up", "open git hab"]
+    .some(phrase => message.toLowerCase().includes(phrase))
+  ) {
+      speak("Opening GitHub...");
+      window.open("https://github.com", "_blank");
+  }
+  
    else if(message.includes("open calculator")){
     openCalculator();
 }
