@@ -63,15 +63,15 @@ function openWhatsApp() {
     const isMobile = /Mobi|Android/i.test(navigator.userAgent);
     
     if (isMobile) {
-        // Attempt to open WhatsApp on mobile
-        const whatsappLink = "whatsapp://send"; // Basic WhatsApp link
+        // Attempt to open WhatsApp on mobile without sending a message
+        const whatsappLink = "whatsapp://"; // Basic link to open WhatsApp
         window.location.href = whatsappLink; // This should open WhatsApp
     } else {
         // User is on desktop
         const whatsappWebUrl = "https://web.whatsapp.com";
         
         // Attempt to open installed WhatsApp
-        const installedWhatsAppLink = "whatsapp://send";
+        const installedWhatsAppLink = "whatsapp://";
         
         // First, try to open the installed WhatsApp
         const openWhatsApp = window.open(installedWhatsAppLink, "_self");
