@@ -64,7 +64,7 @@ function openWhatsApp() {
         if (isMobile) {
             // Mobile device detected
             // Open the installed WhatsApp app or the web link
-            window.open("whatsapp://send?text=Hello", "_self"); // Open WhatsApp on mobile
+            window.open("whatsapp://send", "_blank"); // Open WhatsApp on mobile
         } else {
             // Desktop device detected
             const webWhatsAppUrl = "https://web.whatsapp.com/";
