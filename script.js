@@ -55,34 +55,33 @@ btn.addEventListener("click",()=>{
         btn.style.display="flex";
     },5000)
 })
-
 function openWhatsApp() {
-
-
-    // Check if the user is on mobile or desktop
+    
+    // Check if the user is on mobile
     const isMobile = /Mobi|Android/i.test(navigator.userAgent);
     
     if (isMobile) {
-        // Attempt to open WhatsApp on mobile without sending a message
-        const whatsappLink = "whatsapp://"; // Basic link to open WhatsApp
-        window.location.href = whatsappLink; // This should open WhatsApp app
+        // Attempt to open WhatsApp on mobile
+        const whatsappLink = "whatsapp://"; // Direct link to open WhatsApp
 
-        // Fallback for cases where the above doesn't work
+        // Open WhatsApp directly
+        window.location = whatsappLink;
+
+        // Fallback mechanism
         setTimeout(() => {
-            // If WhatsApp did not open, you can redirect to the app store or a relevant link
-          //  window.location.href = "https://www.whatsapp.com/download"; // Redirect to WhatsApp download page if not opened
+            // If WhatsApp did not open, redirect to the download page
+            window.location.href = "https://www.whatsapp.com/download"; // Redirect to WhatsApp download page
         }, 2000); // Wait for 2 seconds before redirecting
     } else {
         // User is on desktop
         const whatsappWebUrl = "https://web.whatsapp.com";
         
-        // Here, we need to determine if WhatsApp is installed or if the user is logged in
-        const installedWhatsAppLink = "whatsapp://"; // Link to open the installed WhatsApp
+        // Assume not logged in for this example
         const isLoggedIn = false; // Replace with actual logic to check if the user is logged in
 
-        // Try to open the installed WhatsApp if logged in, else open WhatsApp Web
+        // Open installed WhatsApp if logged in, else open WhatsApp Web
         if (isLoggedIn) {
-            window.open(installedWhatsAppLink, "_self"); // Open installed WhatsApp if logged in
+            window.open("whatsapp://", "_self"); // Open installed WhatsApp if logged in
         } else {
             window.open(whatsappWebUrl, "_blank"); // Open WhatsApp Web if not logged in
         }
