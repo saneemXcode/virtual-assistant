@@ -62,10 +62,10 @@ function openWhatsApp() {
     
     if (isMobile) {
         // Attempt to open WhatsApp on mobile
-        const whatsappLink = "whatsapp://"; // Direct link to open WhatsApp
+        // const whatsappLink = "whatsapp://"; // Direct link to open WhatsApp
 
         // Open WhatsApp directly
-        window.location = whatsappLink;
+        window.open("whatsapp://", "_self");
     } else {
         // User is on desktop
         const whatsappWebUrl = "https://web.whatsapp.com";
