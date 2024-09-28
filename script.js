@@ -83,6 +83,40 @@ function openCalculator() {
     }
 }
 
+function openAppOrFallback() {
+    // Configuration
+    const appID = 'whatsapp';
+    const appleStoreURL = 'https://apps.apple.com/app/whatsapp-messenger/id310633997';
+    const googleStoreURL = 'https://play.google.com/store/apps/details?id=com.whatsapp';
+    const desktopURL = 'https://web.whatsapp.com/'; // WhatsApp Web URL
+    const delay = 500; // time in milliseconds before fallback is initiated
+
+    // Form the app-specific URL
+    const appURL = `${appID}://`;
+
+    // Determine the fallback URL based on the device
+    const isAppleDevice = /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent) && !window.MSStream;
+    const isAndroidDevice = /Android/.test(navigator.userAgent);
+    const isDesktop = !isAppleDevice && !isAndroidDevice;
+
+    // Determine fallback URL based on the device type
+    let fallbackURL;
+    if (isDesktop) {
+        fallbackURL = desktopURL; // Use WhatsApp Web for desktop
+    } else {
+        fallbackURL = isAppleDevice ? appleStoreURL : googleStoreURL; // Use app store for mobile
+    }
+
+    // Try opening the app
+    window.location = appURL;
+
+    // Redirect to the appropriate fallback after a delay if unsuccessful
+    setTimeout(function () {
+        window.location = fallbackURL;
+    }, delay);
+}
+
+
 
 
 
@@ -130,10 +164,10 @@ function takeCommand(message){
     openCalculator();
 }
 
-   else if(message.includes("open whatsapp")){
-    speak("opening whatsapp...")
-    window.open('https://whatsapp.com/',"_blank")
-   }
+else if (message.includes("open whatsapp")) {
+    speak("Opening WhatsApp...");
+    openAppOrFallback();
+}
    
    else if(message.includes("time")){
     let time=new Date().toLocaleString(undefined,{hour:"numeric",minute:"numeric"})
