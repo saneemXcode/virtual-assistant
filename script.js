@@ -64,7 +64,7 @@ function openWhatsApp() {
     
     if (isMobile) {
         // Attempt to open WhatsApp on mobile without sending a message
-        const whatsappLink = "whatsapp://send"; // Basic link to open WhatsApp
+        const whatsappLink = "whatsapp://"; // Basic link to open WhatsApp
         window.location.href = whatsappLink; // This should open WhatsApp app
 
         // Fallback for cases where the above doesn't work
