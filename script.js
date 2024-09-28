@@ -57,7 +57,7 @@ btn.addEventListener("click",()=>{
 })
 
 function openWhatsApp() {
-    speak("Opening WhatsApp...");
+
 
     // Check if the user is on mobile or desktop
     const isMobile = /Mobi|Android/i.test(navigator.userAgent);
