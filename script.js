@@ -120,12 +120,11 @@ function takeCommand(message){
  
    else if (
     ["open github", "open get hub", "open it hub", "open get up", "open git hab"]
-    .some(phrase => message.includes(phrase))
-  ) {
-      speak("Opening GitHub...");
-      window.open("https://github.com", "_blank");
-  }
-  
+    .some(phrase => message.toLowerCase().includes(phrase))
+) {
+    speak("Opening GitHub...");
+    window.open("https://github.com", "_blank");
+}
    else if(message.includes("open calculator")){
     openCalculator();
 }
@@ -148,9 +147,11 @@ function takeCommand(message){
  
    }
 
-   else{
-   let final_text="this is  what i found on internet regarding "+message.replace("miza ","") || message.replace("mirza ","") 
-    speak(final_text)
-    window.open(`https://www.google.co.in/search?q=${message.replace("mirza ","") || message.replace("mirza ","")}`,"_blank")
-   }
+ else {
+    // Correctly handle the message replacement for the final text
+    const cleanedMessage = message.replace(/miza /i, "").replace(/mirza /i, "").trim();
+    const final_text = "This is what I found on the internet regarding " + cleanedMessage;
+    speak(final_text);
+    window.open(`https://www.google.co.in/search?q=${cleanedMessage}`, "_blank");
 }
+
