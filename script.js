@@ -56,32 +56,22 @@ btn.addEventListener("click",()=>{
     },5000)
 })
 function openWhatsApp() {
-    
-    // Check if the user is on mobile
-    const isMobile = /Mobi|Android/i.test(navigator.userAgent);
-    
-    if (isMobile) {
-        // Attempt to open WhatsApp on mobile
-        // const whatsappLink = "whatsapp://"; // Direct link to open WhatsApp
+    // Check if the message includes "open whatsapp"
 
-        // Open WhatsApp directly
-        window.open("whatsapp://", "_self");
-    } else {
-        // User is on desktop
-        const whatsappWebUrl = "https://web.whatsapp.com";
-        
-        // Assume not logged in for this example
-        const isLoggedIn = false; // Replace with actual logic to check if the user is logged in
+        // Determine if the user is on a mobile or desktop device
+        const isMobile = /Mobi|Android/i.test(navigator.userAgent);
 
-        // Open installed WhatsApp if logged in, else open WhatsApp Web
-        if (isLoggedIn) {
-            window.open("whatsapp://", "_self"); // Open installed WhatsApp if logged in
+        if (isMobile) {
+            // Mobile device detected
+            // Open the installed WhatsApp app or the web link
+            window.open("whatsapp://send?text=Hello", "_self"); // Open WhatsApp on mobile
         } else {
-            window.open(whatsappWebUrl, "_blank"); // Open WhatsApp Web if not logged in
+            // Desktop device detected
+            const webWhatsAppUrl = "https://web.whatsapp.com/";
+            // Open WhatsApp Web
+            window.open(webWhatsAppUrl, "_blank");
         }
     }
-}
-
 
 function takeCommand(message){
     btn.style.display="flex";
