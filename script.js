@@ -70,7 +70,7 @@ function openWhatsApp() {
         // Fallback for cases where the above doesn't work
         setTimeout(() => {
             // If WhatsApp did not open, you can redirect to the app store or a relevant link
-            window.location.href = "https://www.whatsapp.com/download"; // Redirect to WhatsApp download page if not opened
+          //  window.location.href = "https://www.whatsapp.com/download"; // Redirect to WhatsApp download page if not opened
         }, 2000); // Wait for 2 seconds before redirecting
     } else {
         // User is on desktop
