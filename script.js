@@ -65,21 +65,26 @@ function openWhatsApp() {
     if (isMobile) {
         // Attempt to open WhatsApp on mobile without sending a message
         const whatsappLink = "whatsapp://"; // Basic link to open WhatsApp
-        window.location.href = whatsappLink; // This should open WhatsApp
+        window.location.href = whatsappLink; // This should open WhatsApp app
+
+        // Fallback for cases where the above doesn't work
+        setTimeout(() => {
+            // If WhatsApp did not open, you can redirect to the app store or a relevant link
+            window.location.href = "https://www.whatsapp.com/download"; // Redirect to WhatsApp download page if not opened
+        }, 2000); // Wait for 2 seconds before redirecting
     } else {
         // User is on desktop
         const whatsappWebUrl = "https://web.whatsapp.com";
         
-        // Attempt to open installed WhatsApp
-        const installedWhatsAppLink = "whatsapp://";
-        
-        // First, try to open the installed WhatsApp
-        const openWhatsApp = window.open(installedWhatsAppLink, "_self");
-        
-        // Check if the window was blocked or not opened (could indicate that WhatsApp is not installed)
-        if (!openWhatsApp) {
-            // If it did not open, fallback to WhatsApp Web
-            window.open(whatsappWebUrl, "_blank");
+        // Here, we need to determine if WhatsApp is installed or if the user is logged in
+        const installedWhatsAppLink = "whatsapp://"; // Link to open the installed WhatsApp
+        const isLoggedIn = false; // Replace with actual logic to check if the user is logged in
+
+        // Try to open the installed WhatsApp if logged in, else open WhatsApp Web
+        if (isLoggedIn) {
+            window.open(installedWhatsAppLink, "_self"); // Open installed WhatsApp if logged in
+        } else {
+            window.open(whatsappWebUrl, "_blank"); // Open WhatsApp Web if not logged in
         }
     }
 }
