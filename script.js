@@ -56,7 +56,28 @@ btn.addEventListener("click",()=>{
     },5000)
 })
 
+function openWhatsApp() {
+    speak("Opening WhatsApp...");
 
+    // Check if the user is on mobile or desktop
+    const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+
+    if (isMobile) {
+        // Open WhatsApp on mobile
+        window.open("whatsapp://send", "_self"); // Opens installed WhatsApp
+    } else {
+        // User is on desktop
+        const isLoggedIn = false; // Replace this with an actual login check if needed
+
+        if (isLoggedIn) {
+            // Open installed WhatsApp
+            window.open("whatsapp://send", "_self");
+        } else {
+            // Open WhatsApp Web
+            window.open("https://web.whatsapp.com", "_blank");
+        }
+    }
+}
 
 function takeCommand(message){
     btn.style.display="flex";
@@ -102,8 +123,7 @@ function takeCommand(message){
 }
 
 else if (message.includes("open whatsapp")) {
-    speak("Opening WhatsApp...");
-    window.open("whatsapp://", "_blank");
+    openWhatsApp()
     
 }
    
