@@ -66,12 +66,6 @@ function openWhatsApp() {
 
         // Open WhatsApp directly
         window.location = whatsappLink;
-
-        // Fallback mechanism
-        setTimeout(() => {
-            // If WhatsApp did not open, redirect to the download page
-            window.location.href = "https://www.whatsapp.com/download"; // Redirect to WhatsApp download page
-        }, 2000); // Wait for 2 seconds before redirecting
     } else {
         // User is on desktop
         const whatsappWebUrl = "https://web.whatsapp.com";
