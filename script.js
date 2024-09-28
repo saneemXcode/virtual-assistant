@@ -154,4 +154,4 @@ function takeCommand(message){
     speak(final_text);
     window.open(`https://www.google.co.in/search?q=${cleanedMessage}`, "_blank");
 }
-
+}
