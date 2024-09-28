@@ -119,7 +119,7 @@ function takeCommand(message){
  
    else if (
     ["open github", "open get hub", "open it hub", "open get up", "open git hab"]
-    .some(phrase => message.toLowerCase().includes(phrase))
+    .some(phrase => message.includes(phrase))
   ) {
       speak("Opening GitHub...");
       window.open("https://github.com", "_blank");
