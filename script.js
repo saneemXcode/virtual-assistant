@@ -58,20 +58,34 @@ btn.addEventListener("click",()=>{
 
 function openCalculator() {
     const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-   // The navigator.userAgent property contains information about the browser and operating system being used.
 
     if (/android/i.test(userAgent)) {
-        // Android-specific intent to open the calculator app
-        speak("Opening calculator on Android...");
-        window.location.href = 'intent://#Intent;action=android.intent.action.MAIN;category=android.intent.category.APP_CALCULATOR;package=com.android.calculator2;end;';
-      /*  On Android, it's possible to use an intent to communicate with other apps from within a browser.
-        By specifying a special URL format (intent://), we can try to trigger the native Calculator app on an Android device*/
-    }else {
-        // Fallback for desktop or unknown device
+        // Android device detected, attempt to open the calculator using intent
+        try {
+            speak("Opening calculator on Android...");
+            // Android intent to open calculator
+            window.location.href = 'intent://#Intent;action=android.intent.action.MAIN;category=android.intent.category.APP_CALCULATOR;end;';
+            setTimeout(function() {
+                // If intent doesn't open the calculator, fallback to web-based calculator
+                speak("Unable to open native calculator. Opening web-based calculator instead...");
+                window.open("https://www.calculator.com", "_blank");
+            }, 2000); // 2-second delay to allow for intent to work
+        } catch (error) {
+            // Fallback to web calculator if something goes wrong
+            speak("Opening web-based calculator...");
+            window.open("https://www.calculator.com", "_blank");
+        }
+    } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        // iOS device detected, fallback to web-based calculator
+        speak("Opening calculator in the browser...");
+        window.open("https://www.calculator.com", "_blank");
+    } else {
+        // Fallback for desktop or unknown devices
         speak("Opening calculator...");
-        window.open("calculator://", "_blank"); // Open web-based calculator
+        window.open("https://www.calculator.com", "_blank");
     }
 }
+
 
 
 
