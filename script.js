@@ -56,70 +56,6 @@ btn.addEventListener("click",()=>{
     },5000)
 })
 
-function openCalculator() {
-    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-
-    if (/android/i.test(userAgent)) {
-        // Android device detected, attempt to open the calculator using intent
-        try {
-            speak("Opening calculator on Android...");
-            // Android intent to open calculator
-            window.location.href = "intent://calculator/#Intent;action=android.intent.action.MAIN;category=android.intent.category.APP_CALCULATOR;end";
-
-            setTimeout(function() {
-                // If intent doesn't open the calculator, fallback to web-based calculator
-                speak("Unable to open native calculator. Opening web-based calculator instead...");
-                window.open("https://www.calculator.com", "_blank");
-            }, 2000); // 2-second delay to allow for intent to work
-        } catch (error) {
-            // Fallback to web calculator if something goes wrong
-            speak("Opening web-based calculator...");
-            window.open("https://www.calculator.com", "_blank");
-        }
-    }  else {
-        // Fallback for desktop or unknown devices
-        speak("Opening calculator...");
-        window.open("calculator://", "_blank");
-    }
-}
-
-function openAppOrFallback() {
-    // Configuration
-    const appID = 'whatsapp';
-    const appleStoreURL = 'https://apps.apple.com/app/whatsapp-messenger/id310633997';
-    const googleStoreURL = 'https://play.google.com/store/apps/details?id=com.whatsapp';
-    const desktopURL = 'https://web.whatsapp.com/'; // WhatsApp Web URL
-    const delay = 500; // time in milliseconds before fallback is initiated
-
-    // Form the app-specific URL
-    const appURL = `${appID}://`;
-
-    // Determine the fallback URL based on the device
-    const isAppleDevice = /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent) && !window.MSStream;
-    const isAndroidDevice = /Android/.test(navigator.userAgent);
-    const isDesktop = !isAppleDevice && !isAndroidDevice;
-
-    // Determine fallback URL based on the device type
-    let fallbackURL;
-    if (isDesktop) {
-        fallbackURL = desktopURL; // Use WhatsApp Web for desktop
-    } else {
-        fallbackURL = isAppleDevice ? appleStoreURL : googleStoreURL; // Use app store for mobile
-    }
-
-    // Try opening the app
-    window.location = appURL;
-
-    // Redirect to the appropriate fallback after a delay if unsuccessful
-    setTimeout(function () {
-        window.location = fallbackURL;
-    }, delay);
-}
-
-
-
-
-
 
 
 function takeCommand(message){
@@ -161,12 +97,14 @@ function takeCommand(message){
     window.open("https://github.com", "_blank");
 }
    else if(message.includes("open calculator")){
-    openCalculator();
+    speak("Opening calculator...");
+    window.open("calculator://", "_blank");
 }
 
 else if (message.includes("open whatsapp")) {
     speak("Opening WhatsApp...");
-    openAppOrFallback();
+    window.open("whatsapp://", "_blank");
+    
 }
    
    else if(message.includes("time")){
