@@ -52,6 +52,26 @@ btn.addEventListener("click",()=>{
     },5000)
 })
 
+function openCalculator() {
+    const userAgent = navigator.userAgent 
+   // The navigator.userAgent property contains information about the browser and operating system being used.
+
+    if (/android/i.test(userAgent)) {
+        // Android-specific intent to open the calculator app
+        speak("Opening calculator on Android...");
+        window.location.href = 'intent:#Intent;action=android.intent.action.MAIN;category=android.intent.category.APP_CALCULATOR;end;';
+      /*  On Android, it's possible to use an intent to communicate with other apps from within a browser.
+        By specifying a special URL format (intent://), we can try to trigger the native Calculator app on an Android device*/
+    }else {
+        // Fallback for desktop or unknown device
+        speak("Opening calculator...");
+        window.open("calculator://", "_blank"); // Open web-based calculator
+    }
+}
+
+
+
+
 function takeCommand(message){
     btn.style.display="flex";
     voice.style.display="none"
@@ -87,9 +107,9 @@ function takeCommand(message){
     window.open('https://github.com/',"_blank")
    }
    else if(message.includes("open calculator")){
-    speak("opening calculator...")
-    window.open("calculator://")
-   }
+    openCalculator();
+}
+
    else if(message.includes("open whatsapp")){
     speak("opening whatsapp...")
     window.open('https://whatsapp.com/',"_blank")
