@@ -41,7 +41,8 @@ recognition.onresult=(event)=>{
    content.innerText = transcript
   .replace("Mirza", "Miza")
   .replace("git hub", "github")
-  .replace("git up", "github");
+  .replace("git up", "github")
+  .replace("get hub", "github").replace("get up", "github");
     console.log(event)
     takeCommand(transcript.toLowerCase())
 }
