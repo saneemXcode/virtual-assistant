@@ -64,14 +64,14 @@ function openWhatsApp() {
 
     if (isMobile) {
         // Open WhatsApp on mobile
-        window.open("whatsapp://send", "_blank"); // Opens installed WhatsApp
+        window.open("whatsapp://send", "_self"); // Opens installed WhatsApp
     } else {
         // User is on desktop
         const isLoggedIn = false; // Replace this with an actual login check if needed
 
         if (isLoggedIn) {
             // Open installed WhatsApp
-            window.open("whatsapp://send", "_blank");
+            window.open("whatsapp://send", "_self");
         } else {
             // Open WhatsApp Web
             window.open("https://web.whatsapp.com", "_blank");
