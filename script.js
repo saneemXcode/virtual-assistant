@@ -38,7 +38,10 @@ let recognition =  new speechRecognition()
 recognition.onresult=(event)=>{
    let currentIndex =event.resultIndex;
    let transcript=event.results[currentIndex][0].transcript
-   content.innerText=transcript.replace("Mirza", "Miza");
+   content.innerText = transcript
+  .replace("Mirza", "Miza")
+  .replace("git hub", "github")
+  .replace("git up", "github");
     console.log(event)
     takeCommand(transcript.toLowerCase())
 }
@@ -53,7 +56,7 @@ btn.addEventListener("click",()=>{
 })
 
 function openCalculator() {
-    const userAgent = navigator.userAgent 
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
    // The navigator.userAgent property contains information about the browser and operating system being used.
 
     if (/android/i.test(userAgent)) {
