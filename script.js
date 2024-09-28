@@ -42,7 +42,7 @@ recognition.onresult=(event)=>{
   .replace("Mirza", "Miza")
   .replace("git hub", "github")
   .replace("git up", "github")
-  .replace("get hub", "github").replace("get up", "github");
+  .replace("get hub", "github").replace("get up", "github").replace("it hub", "github");
     console.log(event)
     takeCommand(transcript.toLowerCase())
 }
