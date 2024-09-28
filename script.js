@@ -63,7 +63,7 @@ function openCalculator() {
     if (/android/i.test(userAgent)) {
         // Android-specific intent to open the calculator app
         speak("Opening calculator on Android...");
-        window.location.href = 'intent:#Intent;action=android.intent.action.MAIN;category=android.intent.category.APP_CALCULATOR;end;';
+        window.location.href = 'intent://#Intent;action=android.intent.action.MAIN;category=android.intent.category.APP_CALCULATOR;package=com.android.calculator2;end;';
       /*  On Android, it's possible to use an intent to communicate with other apps from within a browser.
         By specifying a special URL format (intent://), we can try to trigger the native Calculator app on an Android device*/
     }else {
