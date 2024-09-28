@@ -75,14 +75,10 @@ function openCalculator() {
             speak("Opening web-based calculator...");
             window.open("https://www.calculator.com", "_blank");
         }
-    } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-        // iOS device detected, fallback to web-based calculator
-        speak("Opening calculator in the browser...");
-        window.open("https://www.calculator.com", "_blank");
-    } else {
+    }  else {
         // Fallback for desktop or unknown devices
         speak("Opening calculator...");
-        window.open("https://www.calculator.com", "_blank");
+        window.open("calculator://", "_blank");
     }
 }
 
