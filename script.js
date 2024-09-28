@@ -106,7 +106,7 @@ function takeCommand(message){
     speak("opening twitter...")
     window.open('https://x.com/',"_blank")
    }
-   else if(message.includes("open github")){
+   else if(message.includes("open github")||message.includes("open get hub") ||message.includes("open it hub")||message.includes("open get up") || message.includes("open git hab") ){
     speak("opening github...")
     window.open('https://github.com/',"_blank")
    }
