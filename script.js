@@ -64,7 +64,7 @@ function openCalculator() {
         try {
             speak("Opening calculator on Android...");
             // Android intent to open calculator
-            window.location.href = 'intent://calculator/#Intent;action=android.intent.action.MAIN;category=android.intent.category.APP_CALCULATOR;end;';
+            window.location.href = "intent://calculator/#Intent;action=android.intent.action.MAIN;category=android.intent.category.APP_CALCULATOR;end";
 
             setTimeout(function() {
                 // If intent doesn't open the calculator, fallback to web-based calculator
@@ -82,6 +82,7 @@ function openCalculator() {
         window.open("calculator://", "_blank");
     }
 }
+
 
 
 
